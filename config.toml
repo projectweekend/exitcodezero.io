@@ -7,7 +7,7 @@ languageCode = "en-US"
 layoutdir = "layouts"
 publishdir = "public"
 author = "Brian Hines"
-title = "Exit Code Zero"
+title = "Brian Hines"
 pluralizelisttitles = false
 
 [permalinks]
