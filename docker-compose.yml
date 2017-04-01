@@ -1,0 +1,9 @@
+version: "3"
+services:
+    builder:
+        command: python -m app.song
+        build:
+            context: ./builder
+        volumes:
+            - "./builder:/src"
+            - "./content:/content"
