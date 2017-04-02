@@ -23,3 +23,8 @@ highlightjs = true
 lang = "en"
 github = "projectweekend"
 linkedin = "briandhines"
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+series = "series"
