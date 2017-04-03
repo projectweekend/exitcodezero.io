@@ -1,9 +1,9 @@
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from .utils import filter_dict
+from app.utils import filter_dict
 
 
-class SpotifyInfo:
+class SpotifyAPI:
 
     def __init__(self, client_service):
         self._client = client_service()
