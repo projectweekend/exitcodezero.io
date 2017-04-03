@@ -19,13 +19,6 @@ class SpotifyAPI:
     def song(self, uri):
         track = self._client.track(uri)
         result = filter_dict(track, {'name', 'preview_url', 'uri'})
-
-        with ThreadPoolExecutor() as executor:
-            tasks = {
-                executor.submit(self.album, track['album']['uri']): 'album',
-                executor.submit(self.artist, track['artists'].pop()['uri']): 'artist'
-            }
-        for future in as_completed(tasks):
-            result[tasks[future]] = future.result()
-
+        result['artist'] = {'uri': track['artists'].pop()['uri']}
+        result['album'] = {'uri': track['album']['uri']}
         return result

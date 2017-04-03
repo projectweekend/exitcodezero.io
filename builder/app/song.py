@@ -1,5 +1,5 @@
 from app.services import clients
-from app.services.api import SpotifyAPI
+from app.services.apis import SpotifyAPI
 
 
 def main():
