@@ -4,3 +4,5 @@ themes/
 *.pyc
 
 builder/\.coverage
+
+builder/cassettes/
