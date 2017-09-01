@@ -1,0 +1,42 @@
+Resources:
+    WebsiteBucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket: exitcodezero.io
+        PolicyDocument: {"Version":"2012-10-17","Statement":[{"Sid":"PublicReadGetObject","Effect":"Allow","Principal": "*","Action":["s3:GetObject"],"Resource":["arn:aws:s3:::exitcodezero.io/*"]}]}
+    ExitCodeZeroBucket:
+        Type: AWS::S3::Bucket
+        Properties:
+            AccessControl: PublicRead
+            BucketName: exitcodezero.io
+            WebsiteConfiguration:
+                ErrorDocument: 404.html
+                IndexDocument: index.html
+    WwwExitCodeZeroBucket:
+        Type: AWS::S3::Bucket
+        Properties:
+            AccessControl: PublicRead
+            BucketName: www.exitcodezero.io
+            WebsiteConfiguration:
+                RedirectAllRequestsTo:
+                    HostName: exitcodezero.io
+                    Protocol: http
+    ExitCodeZeroRoute53:
+        Type: "AWS::Route53::RecordSet"
+        Properties:
+        Properties:
+            AliasTarget:
+                DNSName: s3-website-us-east-1.amazonaws.com
+                HostedZoneId: Z3AQBSTGFYJSTF
+            HostedZoneId: Z2NIHEK8Z6RTTA
+            Name: exitcodezero.io
+            Type: A
+    WwwExitCodeZeroRoute53:
+        Type: "AWS::Route53::RecordSet"
+        Properties:
+            AliasTarget:
+                DNSName: s3-website-us-east-1.amazonaws.com
+                HostedZoneId: Z3AQBSTGFYJSTF
+            HostedZoneId: Z2NIHEK8Z6RTTA
+            Name: www.exitcodezero.io
+            Type: A
