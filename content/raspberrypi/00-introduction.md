@@ -1,8 +1,8 @@
 +++
 title = "00: Introduction"
+description = "This guide is a concise and approachable collection of advanced techniques to level up your Raspberry Pi game."
 date = 2017-09-16
 draft = true
-description = "This guide is a concise and approachable collection of advanced techniques to level up your Raspberry Pi game."
 +++
 # A Different Kind of Guide
 
