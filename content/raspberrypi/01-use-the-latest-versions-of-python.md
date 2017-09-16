@@ -2,7 +2,7 @@
 title = "01: Use the latest versions of Python"
 description = "This guide demonstrates the best way to install and manage the latest versions of Python."
 date = 2017-09-16
-draft = true
+draft = false
 +++
 The Raspberry Pi's [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) operating system uses default versions of Python that are out of date. Using the open source [pyenv](https://github.com/pyenv/pyenv) tool you can easily install and manage the latest versions. I use it, almost daily, for development projects at work and home. Having worked in Python both with and without `pyenv`, I can confidently say using it makes life much better.
 
