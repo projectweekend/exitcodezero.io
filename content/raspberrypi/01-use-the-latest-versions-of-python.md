@@ -60,6 +60,3 @@ To change Python versions globally, across the entire system, use the `global` c
 ```bash
 $ pyenv global 3.6.2
 ```
-
-### Wrap up
-Having the ability to use different versions of Python, per project, without disturbing the default system installation is quite powerful. It gives you the freedom to experiment while not breaking things. In the next chapter, we will build on this concept and learn about using separate virtual Python environments for every project.
