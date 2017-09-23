@@ -16,7 +16,7 @@
                 <ul>
                     {{ range .Data.Pages.ByTitle }}
                         {{ if ne .Title $globalTitle }}
-                            {{ partial "li.html" . }}
+                            {{ partial "raspberrypi/li.html" . }}
                         {{ end }}
                     {{ end }}
                 </ul>
