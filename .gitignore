@@ -2,6 +2,7 @@ public/
 themes/
 
 *.pyc
+.venv/
 
 builder/\.coverage
 
