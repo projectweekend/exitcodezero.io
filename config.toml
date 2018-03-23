@@ -9,9 +9,10 @@ publishdir = "public"
 author = "Brian Hines"
 title = "Brian Hines"
 pluralizelisttitles = false
+enableEmoji = true
 
 [permalinks]
-blog = "blog/:slug/"
+words = "words/:slug/"
 
 [params]
 dateform = "Jan 2, 2006"
