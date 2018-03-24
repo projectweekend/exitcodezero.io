@@ -27,7 +27,7 @@ Resources:
         Properties:
             AliasTarget:
                 DNSName:                !GetAtt ExitCodeZeroCloudFrontDist.DomainName
-                HostedZoneId:           Z3AQBSTGFYJSTF
+                HostedZoneId:           Z2FDTNDATAQYW2
             HostedZoneId:               Z2NIHEK8Z6RTTA
             Name:                       exitcodezero.io
             Type:                       A
