@@ -1,4 +1,4 @@
-baseurl = "http://exitcodezero.io/"
+baseurl = "https://exitcodezero.io/"
 theme = "cocoa-eh"
 builddrafts = false
 canonifyurls = true
