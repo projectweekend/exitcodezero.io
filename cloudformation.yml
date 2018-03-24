@@ -1,42 +1,65 @@
 Resources:
     WebsiteBucketPolicy:
-      Type: AWS::S3::BucketPolicy
+      Type:                             AWS::S3::BucketPolicy
       Properties:
-        Bucket: exitcodezero.io
+        Bucket:                         exitcodezero.io
         PolicyDocument: {"Version":"2012-10-17","Statement":[{"Sid":"PublicReadGetObject","Effect":"Allow","Principal": "*","Action":["s3:GetObject"],"Resource":["arn:aws:s3:::exitcodezero.io/*"]}]}
     ExitCodeZeroBucket:
-        Type: AWS::S3::Bucket
+        Type:                           AWS::S3::Bucket
         Properties:
-            AccessControl: PublicRead
-            BucketName: exitcodezero.io
+            AccessControl:              PublicRead
+            BucketName:                 exitcodezero.io
             WebsiteConfiguration:
-                ErrorDocument: 404.html
-                IndexDocument: index.html
+                ErrorDocument:          404.html
+                IndexDocument:          index.html
     WwwExitCodeZeroBucket:
-        Type: AWS::S3::Bucket
+        Type:                           AWS::S3::Bucket
         Properties:
-            AccessControl: PublicRead
-            BucketName: www.exitcodezero.io
+            AccessControl:              PublicRead
+            BucketName:                 www.exitcodezero.io
             WebsiteConfiguration:
                 RedirectAllRequestsTo:
-                    HostName: exitcodezero.io
-                    Protocol: http
+                    HostName:           exitcodezero.io
+                    Protocol:           http
     ExitCodeZeroRoute53:
-        Type: "AWS::Route53::RecordSet"
+        Type:                           "AWS::Route53::RecordSet"
         Properties:
         Properties:
             AliasTarget:
-                DNSName: s3-website-us-east-1.amazonaws.com
-                HostedZoneId: Z3AQBSTGFYJSTF
-            HostedZoneId: Z2NIHEK8Z6RTTA
-            Name: exitcodezero.io
-            Type: A
+                DNSName:                !GetAtt ExitCodeZeroCloudFrontDist.DomainName
+                HostedZoneId:           Z3AQBSTGFYJSTF
+            HostedZoneId:               Z2NIHEK8Z6RTTA
+            Name:                       exitcodezero.io
+            Type:                       A
     WwwExitCodeZeroRoute53:
-        Type: "AWS::Route53::RecordSet"
+        Type:                           "AWS::Route53::RecordSet"
         Properties:
             AliasTarget:
-                DNSName: s3-website-us-east-1.amazonaws.com
-                HostedZoneId: Z3AQBSTGFYJSTF
-            HostedZoneId: Z2NIHEK8Z6RTTA
-            Name: www.exitcodezero.io
-            Type: A
+                DNSName:                s3-website-us-east-1.amazonaws.com
+                HostedZoneId:           Z3AQBSTGFYJSTF
+            HostedZoneId:               Z2NIHEK8Z6RTTA
+            Name:                       www.exitcodezero.io
+            Type:                       A
+    ExitCodeZeroCloudFrontDist:
+        Type:                           "AWS::CloudFront::Distribution"
+        Properties:
+          DistributionConfig:
+            Aliases:
+              - exitcodezero.io
+            DefaultCacheBehavior:
+              ForwardedValues:
+                QueryString:            TRUE
+              TargetOriginId:           S3-exitcodezero.io-0
+              ViewerProtocolPolicy:     redirect-to-https
+            DefaultRootObject:          index.html
+            Enabled:                    TRUE
+            HttpVersion:                http2
+            Origins:
+              - DomainName:             !GetAtt ExitCodeZeroBucket.DomainName
+                Id:                     S3-exitcodezero.io-0
+                S3OriginConfig:
+                  OriginAccessIdentity: ""
+            PriceClass:                 PriceClass_100
+            ViewerCertificate:
+              AcmCertificateArn:        "arn:aws:acm:us-east-1:421713074241:certificate/a2235793-0e6b-4c32-9771-e5ff21bf2fef"
+              SslSupportMethod:         sni-only
