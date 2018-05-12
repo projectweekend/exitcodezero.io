@@ -24,13 +24,13 @@
                     {{ range $.Site.Home.Sections }}
                         {{ range first 1 (where .Pages "Section" "ne" "")}}
                             {{ if ne .Section "blog"}}
-                            <li><a href="{{ .Section | urlize | absURL }}">{{ .Section }}</a></li>
+                            <li><a href="{{ .Section | urlize | absURL }}.html">{{ .Section }}</a></li>
                             {{ end }}
                         {{ end }}
                     {{ end }}
                     {{ range where .Site.RegularPages "Section" ""}}
                         {{ if and (ne .Title "License") (ne .Title "Home")}}
-                            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                            <li><a href="{{ .Permalink }}.html">{{ .Title }}</a></li>
                         {{ end }}
                     {{ end }}
                     <li><a href="/resume.html" target="_blank">Resume</a></li>
