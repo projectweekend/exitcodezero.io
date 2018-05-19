@@ -1,6 +1,6 @@
 +++
-title = 'Raspberry Pi headless setup'
-date = 2018-05-12T08:06:06-05:00
+title = 'Raspberry Pi Headless Setup'
+date = 2018-05-12
 draft = false
 tags = ["raspberry-pi"]
 description = "Perform the following steps on a newly flashed SD card so that it has SSH enabled and connects to a WiFi network on the first boot."
