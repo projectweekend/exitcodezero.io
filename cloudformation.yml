@@ -48,6 +48,7 @@ Resources:
               - exitcodezero.io
             DefaultCacheBehavior:
               DefaultTTL:               3600
+              MaxTTL:                   3600
               ForwardedValues:
                 QueryString:            TRUE
               TargetOriginId:           S3-exitcodezero.io-0
