@@ -8,6 +8,7 @@ S3_BUCKET="s3://exitcodezero.io" && \
 cd $RESUME_DIR && \
 resume export $RESUME_FILE --format=html --theme=elegant && \
 cd $ECZ_DIR && \
+rm -r public && \
 hugo -t cocoa-eh && \
 cp $RESUME_FILE_PATH public/$RESUME_FILE && \
 cd public && \
